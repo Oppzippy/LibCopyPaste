@@ -22,7 +22,7 @@ function CopyPasteFrame:Create()
     title:SetPoint("TOP", 0, 0)
     title:SetTextColor(1, 1, 1, 1)
     title:Show()
-    
+
     local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
     scrollFrame:SetPoint("TOP", 0, -30)
     scrollFrame:SetSize(650, 370)
@@ -76,6 +76,7 @@ function CopyPasteFrame:IsOpen()
 end
 
 function CopyPasteFrame:SetCallback(callback)
+    local this = self
     self.button:SetScript("OnClick", function()
         if callback then
             callback()
@@ -88,7 +89,7 @@ function CopyPasteFrame:Hide()
     self:SetTitle("")
     self:SetText("")
     self:SetCallback(nil)
-    self:Hide()
+    self.frame:Hide()
 end
 
 -- Public
@@ -100,9 +101,8 @@ function LibCopyPaste:Copy(title, text)
     frame:Show()
 end
 
-do
-    function LibCopyPaste:Paste(title, callback)
-        frame:SetTitle(title)
-        frame:SetCallback(callback)
-    end
+function LibCopyPaste:Paste(title, callback)
+    frame:SetTitle(title)
+    frame:SetCallback(callback)
+    frame:Show()
 end
