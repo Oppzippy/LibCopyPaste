@@ -1,3 +1,5 @@
+-- luacheck: globals LibStub
+
 local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 1)
 if not LibCopyPaste then return end
 
