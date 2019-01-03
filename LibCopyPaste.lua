@@ -13,8 +13,7 @@ function CopyPasteFrame:Create()
     obj.button = frame:GetChildren()
     frame:EnableMouse(true)
     frame:EnableKeyboard(true)
-    --frame:SetResizable(true)
-    --frame:SetMovable(true)
+    frame:SetMovable(true)
     -- Create subframes
 
     local title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalHugeBlack")
@@ -32,8 +31,12 @@ function CopyPasteFrame:Create()
     editBox:SetMaxLetters(999999)
     editBox:SetSize(630, 350)
     editBox:SetFont(ChatFontNormal:GetFont())
+    editBox:SetAutoFocus(true)
     editBox:SetMultiLine(true)
     editBox:Show()
+    editBox:SetScript("OnEscapePressed", function(self)
+        obj:Hide()
+    end)
 
     scrollFrame:SetScrollChild(editBox)
 
