@@ -30,7 +30,6 @@ function CopyPasteFrame:Create()
 
     local editBox = CreateFrame("EditBox", nil, scrollFrame)
     editBox:SetMaxLetters(999999)
-    editBox:SetAutoFocus(true)
     editBox:SetSize(630, 350)
     editBox:SetFont(ChatFontNormal:GetFont())
     editBox:SetMultiLine(true)
@@ -53,6 +52,7 @@ end
 function CopyPasteFrame:Show()
     self:ResetPosition()
     self.frame:Show()
+    self.editBox:SetFocus()
 end
 
 function CopyPasteFrame:SetTitle(title)
@@ -96,12 +96,14 @@ end
 local frame = CopyPasteFrame:Create()
 
 function LibCopyPaste:Copy(title, text)
+    frame:Hide()
     frame:SetTitle(title)
     frame:SetText(text)
     frame:Show()
 end
 
 function LibCopyPaste:Paste(title, callback)
+    frame:Hide()
     frame:SetTitle(title)
     frame:SetCallback(callback)
     frame:Show()
