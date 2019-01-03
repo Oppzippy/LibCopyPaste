@@ -1,0 +1,7 @@
+## Interface: 80100
+## Title: LibCopyPaste-1.0
+## Notes: Library for copying and pasting multi-line text
+## Author: Oppzippy
+## Version: 1.0
+
+LibCopyPaste.xml
