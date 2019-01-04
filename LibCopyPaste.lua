@@ -11,15 +11,15 @@ CopyPasteFrame.__index = CopyPasteFrame
 function CopyPasteFrame:Create()
     local obj = {}
     setmetatable(obj, CopyPasteFrame)
+    -- Main frame
     local frame = CreateFrame("Frame", nil, UIParent, "DialogBoxFrame")
     obj.button = frame:GetChildren()
     frame:EnableMouse(true)
     frame:EnableKeyboard(true)
     frame:SetMovable(true)
-    -- Create subframes
 
+    -- Child frames
     local title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalHugeBlack")
-    title:SetText("testing")
     title:SetPoint("TOP", 0, 0)
     title:SetTextColor(1, 1, 1, 1)
     title:Show()
