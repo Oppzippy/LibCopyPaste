@@ -4,4 +4,5 @@
 ## Author: Oppzippy
 ## Version: 1.0
 
+Libs/LibStub/LibStub.lua
 LibCopyPaste.xml
