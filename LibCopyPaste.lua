@@ -84,7 +84,7 @@ function CopyPasteFrame:SetCallback(callback)
     local this = self
     self.button:SetScript("OnClick", function()
         if callback then
-            callback()
+            callback(self:GetText())
         end
         self:Hide()
     end)
