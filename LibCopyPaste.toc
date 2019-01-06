@@ -2,6 +2,6 @@
 ## Title: LibCopyPaste-1.0
 ## Notes: Library for copying and pasting multi-line text
 ## Author: Oppzippy
-## Version: 1.0
+## Version: @project-version@
 
 lib.xml

@@ -1,0 +1,5 @@
+package-as: LibCopyPaste
+
+ignore:
+  - .luacheckrc
+  - README.md
