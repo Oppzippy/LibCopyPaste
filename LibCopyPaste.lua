@@ -16,7 +16,6 @@ function CopyPasteFrame:Create()
     obj.button = frame:GetChildren()
     frame:EnableMouse(true)
     frame:EnableKeyboard(true)
-    frame:SetMovable(true)
 
     -- Child frames
     local title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalHugeBlack")
@@ -80,6 +79,7 @@ function CopyPasteFrame:IsOpen()
     return self.frame:IsShown()
 end
 
+-- Callback runs when Okay is clicked. Does not run when excape is pressed.
 function CopyPasteFrame:SetCallback(callback)
     local this = self
     self.button:SetScript("OnClick", function()
@@ -97,9 +97,11 @@ function CopyPasteFrame:Hide()
     self.frame:Hide()
 end
 
--- Public
+-- Public API
 local frame
-
+-- Open a frame containing text for the user to copy
+-- @param title Title of the copy window.
+-- @param text Text to display in the window. This is what will be copied.
 function LibCopyPaste:Copy(title, text)
     if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
@@ -108,6 +110,9 @@ function LibCopyPaste:Copy(title, text)
     frame:Show()
 end
 
+-- Open a frame for the user to paste text into
+-- @param title Title of the paste window.
+-- @param callback Function that will be run when the paste window is closed. The function will be passed the pasted text as an argument.
 function LibCopyPaste:Paste(title, callback)
     if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
