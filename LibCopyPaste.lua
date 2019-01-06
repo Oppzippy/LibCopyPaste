@@ -98,9 +98,10 @@ function CopyPasteFrame:Hide()
 end
 
 -- Public
-local frame = CopyPasteFrame:Create()
+local frame
 
 function LibCopyPaste:Copy(title, text)
+    if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
     frame:SetTitle(title)
     frame:SetText(text)
@@ -108,6 +109,7 @@ function LibCopyPaste:Copy(title, text)
 end
 
 function LibCopyPaste:Paste(title, callback)
+    if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
     frame:SetTitle(title)
     frame:SetCallback(callback)
