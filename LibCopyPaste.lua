@@ -1,6 +1,6 @@
 -- luacheck: globals LibStub
 
-local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 2)
+local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 3)
 if not LibCopyPaste then return end
 
 -- CopyPasteFrame Class
