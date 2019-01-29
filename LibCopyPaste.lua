@@ -81,7 +81,6 @@ end
 
 -- Callback runs when Okay is clicked. Does not run when excape is pressed.
 function CopyPasteFrame:SetCallback(callback)
-    local this = self
     self.button:SetScript("OnClick", function()
         if callback then
             callback(self:GetText())
