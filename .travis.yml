@@ -1,0 +1,8 @@
+language: minimal
+
+addons:
+  apt:
+    packages:
+      - lua-check
+
+script: luacheck .

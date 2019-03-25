@@ -3,3 +3,5 @@ package-as: LibCopyPaste
 ignore:
   - .luacheckrc
   - README.md
+  - license.txt
+  - .travis.yml
