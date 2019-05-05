@@ -1,6 +1,6 @@
 -- luacheck: globals LibStub
 
-local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 3)
+local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 4)
 if not LibCopyPaste then return end
 
 -- CopyPasteFrame Class
@@ -12,8 +12,38 @@ function CopyPasteFrame:Create()
     local obj = {}
     setmetatable(obj, CopyPasteFrame)
     -- Main frame
-    local frame = CreateFrame("Frame", nil, UIParent, "DialogBoxFrame")
-    obj.button = frame:GetChildren()
+    local frame = CreateFrame("Frame", nil, UIParent)
+    -- Backdrop
+    frame:SetBackdrop({
+        bgFile = "Interface/DialogFrame/UI-DialogBox-Background",
+        tile = true,
+        edgeFile = "Interface/DialogFrame/UI-DialogBox-Border",
+        edgeSize = 32,
+        insets = {
+            left = 11,
+            right = 12,
+            top = 12,
+            bottom = 11,
+        },
+    })
+    -- Okay Button
+    local button = CreateFrame("Button", nil, frame)
+    obj.button = button
+    button = button
+    button:SetSize(128, 32)
+    button:SetPoint("BOTTOM", 0, 16)
+    button:SetText(OKAY)
+    -- Textures
+    button:SetNormalTexture(button:CreateTexture(nil, nil, "DialogButtonNormalTexture"))
+    button:SetPushedTexture(button:CreateTexture(nil, nil, "DialogButtonPushedTexture"))
+    button:SetHighlightTexture(button:CreateTexture(nil, nil, "DialogButtonPushedTexture"))
+    -- Fonts
+    button:SetNormalFontObject(DialogButtonNormalText)
+    button:SetHighlightFontObject(DialogButtonHighlightText)
+    button:SetScript("OnClick", function()
+        self:GetParent():Hide()
+    end)
+
     frame:EnableMouse(true)
     frame:EnableKeyboard(true)
 
