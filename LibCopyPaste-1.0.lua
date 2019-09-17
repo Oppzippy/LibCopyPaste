@@ -1,6 +1,6 @@
 -- luacheck: globals LibStub
 
-local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 5)
+local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 6)
 if not LibCopyPaste then return end
 
 -- CopyPasteFrame Class
@@ -134,7 +134,7 @@ local frame
 -- @param title Title of the copy window.
 -- @param text Text to display in the window. This is what will be copied.
 function LibCopyPaste:Copy(title, text)
-    assert(type(title) == "string" and type(text) == "string", "Title and Text are required and must be strings. Usage: Copy(title, text)")
+    assert(type(title) == "string" and type(text) == "string", "title and text are required and must be strings. Usage: Copy(title, text)")
     if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
     frame:SetTitle(title)
@@ -146,7 +146,7 @@ end
 -- @param title Title of the paste window.
 -- @param callback Function that will be run when the paste window is closed. The function will be passed the pasted text as an argument.
 function LibCopyPaste:Paste(title, callback)
-    assert(type(title) == "string" and type(callback) == "function", "Title and Callback are required. title must be a string and callback must be a function. Usage: Copy(title, callback)")
+    assert(type(title) == "string" and type(callback) == "function", "title and callback are required. title must be a string and callback must be a function. Usage: Copy(title, callback)")
     if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
     frame:SetTitle(title)
