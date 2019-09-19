@@ -1,4 +1,4 @@
---- The LibCopyPaste-1.0 API
+--- Library for enabling users to copy and paste blocks of text
 --
 -- @module LibCopyPaste
 -- @usage local LibCopyPaste = LibStub("LibCopyPaste-1.0")
