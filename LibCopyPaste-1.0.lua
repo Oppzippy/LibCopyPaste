@@ -13,7 +13,7 @@ function CopyPasteFrame:Create()
     setmetatable(obj, CopyPasteFrame)
     -- Main frame
     local frame = CreateFrame("Frame", nil, UIParent)
-    frame:SetFrameStrata("HIGH")
+    frame:SetFrameStrata("DIALOG")
     -- Backdrop
     frame:SetBackdrop({
         bgFile = "Interface/DialogFrame/UI-DialogBox-Background",
@@ -49,7 +49,7 @@ function CopyPasteFrame:Create()
     frame:EnableKeyboard(true)
 
     -- Child frames
-    local title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalHugeBlack")
+    local title = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalHugeBlack")
     title:SetPoint("TOP", 0, 0)
     title:SetTextColor(1, 1, 1, 1)
     title:Show()
