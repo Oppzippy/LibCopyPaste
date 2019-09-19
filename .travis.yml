@@ -1,9 +1,12 @@
 language: minimal
-dist: xenial
 
 addons:
   apt:
     packages:
       - lua-check
 
-script: luacheck .
+beforescript: luacheck .
+
+script:
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -l -g 1.13.2
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
