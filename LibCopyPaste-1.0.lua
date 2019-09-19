@@ -3,7 +3,7 @@
 -- @module LibCopyPaste
 -- @usage local LibCopyPaste = LibStub("LibCopyPaste-1.0")
 
-local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 6)
+local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 7)
 if not LibCopyPaste then return end
 
 -- CopyPasteFrame Class
