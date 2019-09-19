@@ -1,4 +1,7 @@
--- luacheck: globals LibStub
+--- The LibCopyPaste-1.0 API
+--
+-- @module LibCopyPaste
+-- @usage local LibCopyPaste = LibStub("LibCopyPaste-1.0")
 
 local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 6)
 if not LibCopyPaste then return end
@@ -149,7 +152,7 @@ end
 
 -- Public API
 local frame
--- Open a frame containing text for the user to copy
+--- Open a frame containing text for the user to copy
 -- @param title Title of the copy window.
 -- @param text Text to display in the window. This is what will be copied.
 -- @param options Table of options. Keys are: readOnly (boolean)
@@ -165,7 +168,7 @@ function LibCopyPaste:Copy(title, text, options)
     frame:Show()
 end
 
--- Open a frame for the user to paste text into
+--- Open a frame for the user to paste text into
 -- @param title Title of the paste window.
 -- @param callback Function that will be run when the paste window is closed. The function will be passed the pasted text as an argument.
 -- @param options Table of options. No options exist yet.

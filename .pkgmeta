@@ -4,7 +4,11 @@ externals:
   Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
 
 ignore:
+  - .editorconfig
+  - .gitignore
   - .luacheckrc
-  - README.md
-  - license.txt
   - .travis.yml
+  - config.ld
+  - ldoc.ltp
+  - license.txt
+  - README.md
