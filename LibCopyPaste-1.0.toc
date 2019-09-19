@@ -8,5 +8,6 @@
 ## Notes: Library for copying and pasting multi-line text
 ## Author: Oppzippy
 ## Version: @project-version@
+## X-Curse-Project-ID: 310719
 
 lib.xml
