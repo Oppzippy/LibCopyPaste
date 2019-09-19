@@ -121,6 +121,25 @@ function CopyPasteFrame:SetCallback(callback)
     end)
 end
 
+function CopyPasteFrame:SetReadOnly(readOnly)
+    self.readOnly = readOnly
+    if readOnly then
+        local text = self.editBox:GetText()
+        self.editBox:SetScript("OnTextChanged", function(editBox)
+            editBox:SetText(text)
+            editBox:HighlightText()
+        end)
+    else
+        self.editBox:SetScript("OnTextChanged", nil)
+    end
+end
+
+function CopyPasteFrame:SetOptions(options)
+    if options.readOnly or self.readOnly then
+        self:SetReadOnly(options.readOnly)
+    end
+end
+
 function CopyPasteFrame:Hide()
     self:SetTitle("")
     self:SetText("")
@@ -133,23 +152,31 @@ local frame
 -- Open a frame containing text for the user to copy
 -- @param title Title of the copy window.
 -- @param text Text to display in the window. This is what will be copied.
-function LibCopyPaste:Copy(title, text)
+-- @param options Table of options. Keys are: readOnly (boolean)
+function LibCopyPaste:Copy(title, text, options)
     assert(type(title) == "string" and type(text) == "string", "title and text are required and must be strings. Usage: Copy(title, text)")
     if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
     frame:SetTitle(title)
     frame:SetText(text)
+    if options then
+        frame:SetOptions(options)
+    end
     frame:Show()
 end
 
 -- Open a frame for the user to paste text into
 -- @param title Title of the paste window.
 -- @param callback Function that will be run when the paste window is closed. The function will be passed the pasted text as an argument.
-function LibCopyPaste:Paste(title, callback)
+-- @param options Table of options. No options exist yet.
+function LibCopyPaste:Paste(title, callback, options)
     assert(type(title) == "string" and type(callback) == "function", "title and callback are required. title must be a string and callback must be a function. Usage: Copy(title, callback)")
     if not frame then frame = CopyPasteFrame:Create() end
     frame:Hide()
     frame:SetTitle(title)
     frame:SetCallback(callback)
+    if options then
+        frame:SetOptions(options)
+    end
     frame:Show()
 end
