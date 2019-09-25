@@ -4,5 +4,4 @@ externals:
   Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
 
 ignore:
-  - license.txt
   - README.md
