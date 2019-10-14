@@ -69,7 +69,7 @@ function CopyPasteFrame:Create()
     editBox:SetAutoFocus(true)
     editBox:SetMultiLine(true)
     editBox:Show()
-    editBox:SetScript("OnEscapePressed", function(self)
+    editBox:SetScript("OnEscapePressed", function()
         obj:Hide()
     end)
 
