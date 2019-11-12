@@ -3,8 +3,10 @@
 -- @module LibCopyPaste
 -- @usage local LibCopyPaste = LibStub("LibCopyPaste-1.0")
 
-local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 7)
+local LibCopyPaste = LibStub:NewLibrary("LibCopyPaste-1.0", 8)
 if not LibCopyPaste then return end
+
+local IsControlKeyDown = IsControlKeyDown
 
 -- CopyPasteFrame Class
 
@@ -102,6 +104,26 @@ function CopyPasteFrame:SetText(text)
 	self.editBox:HighlightText()
 end
 
+function CopyPasteFrame:SetAutoHide(autoHide)
+	if autoHide then
+		-- Text doesn't copy if it's hidden OnKeyDown
+		local hideQueued = false
+		self.editBox:SetScript("OnKeyDown", function(_, key)
+			if key == "C" and IsControlKeyDown() then
+				hideQueued = true
+			end
+		end)
+		self.editBox:SetScript("OnKeyUp", function(_, key)
+			if hideQueued and (key == "C" or key == "LCTRL" or key == "RCTRL") then
+				self:Hide()
+			end
+		end)
+	else
+		self.editBox:SetScript("OnKeyUp", nil)
+		self.editBox:SetScript("OnKeyDown", nil)
+	end
+end
+
 function CopyPasteFrame:GetTitle()
 	return self.title:GetText()
 end
@@ -138,15 +160,21 @@ function CopyPasteFrame:SetReadOnly(readOnly)
 end
 
 function CopyPasteFrame:SetOptions(options)
-	if options.readOnly or self.readOnly then
+	if options.readOnly ~= nil or self.readOnly ~= nil then
 		self:SetReadOnly(options.readOnly)
 	end
+	self:SetAutoHide(options.autoHide)
 end
 
+-- Reset to initial state here
 function CopyPasteFrame:Hide()
 	self:SetTitle("")
 	self:SetText("")
 	self:SetCallback(nil)
+	self:SetOptions({
+		readOnly = false,
+		autoHide = false,
+	})
 	self.frame:Hide()
 end
 
