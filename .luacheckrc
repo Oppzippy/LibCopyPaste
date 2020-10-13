@@ -49713,4 +49713,5 @@ globals = {
 	"QuestFont_Large",
 	"DRUNK_MESSAGE_ITEM_SELF3",
 	"PrimaryProfession1StatusBarRank",
+	"BackdropTemplateMixin",
 }
