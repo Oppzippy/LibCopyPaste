@@ -59,7 +59,7 @@ function CopyPasteFrame:Create()
 	title:SetTextColor(1, 1, 1, 1)
 	title:Show()
 
-	local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
+	local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "ScrollFrameTemplate")
 	scrollFrame:SetPoint("TOP", 0, -30)
 	scrollFrame:SetSize(650, 370)
 	scrollFrame:Show()
